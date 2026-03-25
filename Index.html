@@ -13,6 +13,22 @@
         th { background-color: #007bff; color: white; }
     </style>
 </head>
+<script>
+    fetch('http://127.0.0.1:5000/api/students')
+        .then(response => response.json())
+        .then(data => {
+            const table = document.getElementById('studentTable');
+            data.forEach(student => {
+                let row = `<tr>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.course}</td>
+                    <td>${student.grade}</td>
+                </tr>`;
+                table.innerHTML += row;
+            });
+        });
+</script>
 <body>
     <div class="container">
         <h2>Student Records</h2>

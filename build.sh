@@ -1,19 +1,27 @@
 #!/bin/bash
 
-echo "Starting Build Process for SMS..."
+echo "------------------------------------------"
+echo "Starting SCM Build Process for SMS..."
+echo "------------------------------------------"
 
-# 1. Update system and install dependencies
-echo "Installing Python dependencies..."
+# Check if pip is installed
+if ! command -v pip &> /dev/null
+then
+    echo "Error: pip is not installed. Please install Python/pip."
+    exit 1
+fi
+
+# Install Flask dependency
+echo "Installing Flask module..."
 pip install flask
 
-# 2. Run basic syntax check
-echo "Running code linting..."
+# Run a syntax check on the backend
+echo "Verifying backend configuration..."
 python3 -m py_compile src/backend/app.py
 
-# 3. Success Message
 if [ $? -eq 0 ]; then
-    echo "Build Successful: v1.0.0"
+    echo "SUCCESS: Build complete and dependencies verified."
 else
-    echo "Build Failed!"
+    echo "FAILURE: Syntax error in app.py. Check your code."
     exit 1
 fi
