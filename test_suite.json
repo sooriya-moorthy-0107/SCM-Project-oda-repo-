@@ -1,0 +1,24 @@
+{
+  "test_cases": [
+    {
+      "id": "TC_001",
+      "description": "Verify student list retrieval",
+      "endpoint": "/api/students",
+      "method": "GET",
+      "expected_status": 200
+    },
+    {
+      "id": "TC_002",
+      "description": "Verify new student creation",
+      "endpoint": "/api/add_student",
+      "method": "POST",
+      "payload": {
+        "id": 3,
+        "name": "Charlie",
+        "course": "Cyber Security",
+        "grade": "A"
+      },
+      "expected_status": 201
+    }
+  ]
+}
